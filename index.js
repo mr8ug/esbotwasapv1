@@ -417,7 +417,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'web2pdf':
 					if (args.length < 1) return reply('y el texto?')
 					if(!isUrl(args[0]) ) return reply(mess.error.Iv)
-					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/shorturl-at?url=https://docs-jojo.herokuapp.com/api/ssweb_pdf?url=${teks}`)
+					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/shorturl-at?url=https://docs-jojo.herokuapp.com/api/ssweb_pdf?url=${args[0]}`)
 					if (anu.error) return reply(anu.error)
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, 'PDF: '+buffer, text)
