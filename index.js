@@ -390,7 +390,7 @@ client.on('group-participants-update', async (anu) => {
 				case 'dltiktok':
 					if(args.length<1) return reply('Y el zelda de tiktok? .-. ')
 					if (!isUrl(args[0]) && !args[0].includes('tiktok')) return reply(mess.error.Iv)
-					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/tiktok_nowm?url=${args[0]}`), {method:'get'}
+					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/tiktok_nowm?url=${args[0]}`, {method:'get'})
 					if (anu.error) return reply(anu.error)
 					teks=`*Title* : ${anu.from}`
 					buffer = await getBuffer(anu.result[0])
@@ -410,17 +410,18 @@ client.on('group-participants-update', async (anu) => {
 					if(!isUrl(args[0]) ) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/shorturl-at?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, text)
+					//buffer = await getBuffer(anu.result)
+					reply(anu.result)
 					break
                 
 				case 'web2pdf':
 					if (args.length < 1) return reply('y el texto?')
 					if(!isUrl(args[0]) ) return reply(mess.error.Iv)
-					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/shorturl-at?url=https://docs-jojo.herokuapp.com/api/ssweb_pdf?url=${args[0]}`)
+					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/shorturl-at?url=https://docs-jojo.herokuapp.com/api/ssweb_pdf?url=${args[0]}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
-					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, 'PDF: '+buffer, text)
+					//buffer = await getBuffer(anu.result)
+					//client.sendMessage(from, 'PDF: https://docs-jojo.herokuapp.com/api/ssweb_pdf?url='+args[0], text, {quoted: mek})
+					reply(anu.result)
 					break
                 
 				case 'ocr': 
@@ -693,13 +694,13 @@ client.on('group-participants-update', async (anu) => {
 					if (mentioned.length > 1) {
 						teks = ''
 						for (let _ of mentioned) {
-							teks += `𝗦𝗲𝗹𝗮𝗺𝗮𝘁🥳 𝗮𝗻𝗱𝗮 𝗻𝗮𝗶𝗸 𝗺𝗲𝗻𝗷𝗮𝗱𝗶 𝗮𝗱𝗺𝗶𝗻 𝗴𝗿𝗼𝘂𝗽 (+_+) :\n`
+							teks += `Ulala ascendieron a admin de grupo (+_+) :\n`
 							teks += `@_.split('@')[0]`
 						}
 						mentions(teks, mentioned, true)
 						client.groupMakeAdmin(from, mentioned)
 					} else {
-						mentions(`𝗦𝗲𝗹𝗮𝗺𝗮𝘁🥳 @${mentioned[0].split('@')[0]} 𝗮𝗻𝗱𝗮 𝗻𝗮𝗶𝗸 𝗺𝗲𝗻𝗷𝗮𝗱𝗶 𝗮𝗱𝗺𝗶𝗻 𝗴𝗿𝗼𝘂𝗽 (+_+)`, mentioned, true)
+						mentions(`𝗦𝗲𝗹𝗮𝗺𝗮𝘁🥳 @${mentioned[0].split('@')[0]} Ulala ascendieron a admin de grupo (+_+)`, mentioned, true)
 						client.groupMakeAdmin(from, mentioned)
 					}
 					break	
