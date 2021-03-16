@@ -8,7 +8,7 @@ const help = (prefix) => {
 ┣⊱ *${prefix}bug* 
 ┣━━■ *DISEÑADOR* ■━━━━━━
 ┣⊱ *${prefix}sticker [tag / responder]*
-┣⊱ *${prefix}quotemaker [texto]*
+┣⊱ *${prefix}quotemaker [texto | texto]*
 ┣⊱ *${prefix}text3d [texto]*
 ┣⊱ *${prefix}ocr [imagen]*
 ┣⊱ *${prefix}toimg [sticker]*
@@ -17,14 +17,17 @@ const help = (prefix) => {
 ┣━━■ *YOUTUBE* ■━━━━━━
 ┣⊱ *${prefix}ytmp4 [link]*
 ┣⊱ *${prefix}ytmp3 [link]*
-┣━━■ *TIKTOK* ■━━━━━━
-┣⊱ *${prefix}tiktokerstalker [username]*
-┣⊱ *${prefix}dltiktok [link]*
+┣━━■ *TOOLS* ■━━━━━━━
+┣⊱ *${prefix}web2pdf [link]*
+┣⊱ *${prefix}wiki [busqueda]*
+┣⊱ *${prefix}lyrics [nombre cancion]*
+┣⊱ *${prefix}mascota*
+┣⊱ *${prefix}gtts [en/es/lang] [texto]*
 ┣━━■ *CARACOLA MAGICA* ■━━
-┣⊱ *${prefix}Puedo*
-┣⊱ *${prefix}Cuando*
-┣⊱ *${prefix}SiNoTalvez*
-┣⊱ *${prefix}Probabilidad*
+┣⊱ *${prefix}puedo*
+┣⊱ *${prefix}cuando*
+┣⊱ *${prefix}sinotalvez*
+┣⊱ *${prefix}probabilidad*
 ┣━━■ *MENU DE JUEGOS* ■━━━━
 ┣⊱ *${prefix}verdad*
 ┣⊱ *${prefix}reto*
@@ -32,15 +35,9 @@ const help = (prefix) => {
 ┣━━■ ANIME* ■━━━━━━━
 ┣⊱ *${prefix}waifu*
 ┣⊱ *${prefix}kawaii*
-┣━━■ *Other* ■━━━━━━━
-┣⊱ *${prefix}web2pdf [link]*
-┣⊱ *${prefix}lyrics [nombre cancion]*
-┣⊱ *${prefix}mascota*
-┣━━■ *SPAM* ■━━━━━━
-┣⊱ *${prefix}spamcall*
-┣━━■ *AUDIOS GOOGLE* ■━━━━━━
-┣ [es/en/lang] [texto]
-┣⊱ *${prefix}gtts *
+┣━━■ *TIKTOK* ■━━━━━━
+┣⊱ *${prefix}tiktokstalker [username]*
+┣⊱ *${prefix}dltiktok [link]*
 ┣━━■ *GRUPOS* ■━━━━━━
 ┣⊱ *${prefix}blocklist*
 ┣⊱ *${prefix}hidetag*
@@ -55,7 +52,6 @@ const help = (prefix) => {
 ┣⊱ *${prefix}promote*
 ┣⊱ *${prefix}listadmin*
 ┣⊱ *${prefix}group* [buka/tutup]
-┣⊱ *${prefix}simih* [1/0]
 ┣⊱ *${prefix}nsfw* [1/0]
 ┣⊱ *${prefix}welcome* [1/0]
 ┣━━■ *DUEÑO* ■━━━━━━
@@ -75,6 +71,3 @@ const help = (prefix) => {
 }
 exports.help = help
 
-
-
-  

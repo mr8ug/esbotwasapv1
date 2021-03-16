@@ -48,7 +48,7 @@ const bulan = arrayBulan[moment().format('MM') - 1]
 const config = {
     XBOT: 'MR8UG', 
     instagram: 'https://www.instagram.com/carlos.ecampos/', 
-    nomer: '<pontunumero>', //ingresa tu numero de telefon incluyendo el codigo de pais sin el + -> <502 12345678>
+    nomer: '<codigopais><telefonodebot>', //ingresa tu numero de telefon incluyendo el codigo de pais sin el + -> <<codigopais> 12345678>
     youtube: 'https://soundcloud.com/mr8ug/fly-day-chinatown-mr8ug-edit', 
     whatsapp: 'Comming soon', 
     tanggal: `Fecha: ${moment().format('DD')} ${bulan} ${moment().format('YYYY')}`,
@@ -151,23 +151,23 @@ client.on('group-participants-update', async (anu) => {
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
-				wait: '❬❗❭ Awanta,estoy chiquito',
+				wait: '❬❗❭ Awanta, estoy chiquito',
 				success: '️❬ ✔ ❭ Nicee 🖤',
 				error: {
-					stick: 'F, no me salio, intenta de nuevo. ',
+					stick: 'F, ya la cagué verdad?, intenta de nuevo. ',
 					Iv: 'Enlace invalido'
 				},
 				only: {
-					group: '❬❗❭ SOLO GRUPO ',
-					ownerG: '❬❗❭ SOLO JEFE ',
-					ownerB: '❬❗❭  SOLO JEFE ',
-					admin: '❬❗❭ SOLO ADMIN ',
+					group: '❬❗❭ SOLO GRUPOS ',
+					ownerG: '❬❗❭ SOLO JEFES ',
+					ownerB: '❬❗❭  SOLO JEFES ',
+					admin: '❬❗❭ SOLO ADMINS ',
 					Badmin: '❬❗❭ EL BOT DEBE SER ADMIN '
 				}
 			}
 
 			const botNumber = client.user.jid
-			const ownerNumber = ["<pontunumero>@s.whatsapp.net"] //numero de servidor
+			const ownerNumber = ["<codigopais><tunumero>@s.whatsapp.net"] //numero de servidor
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -205,33 +205,33 @@ client.on('group-participants-update', async (anu) => {
 			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			switch(command) {
-				case 'Puedo':
+				case 'puedo':
 					bisakah = body.slice(1)
 					const bisa =['Pues si wey no mames','Hijole no se va poder','Intenta de nuevo']
 					const keh = bisa[Math.floor(Math.random() * bisa.length)]
-					client.sendMessage(from, 'Pregunta : *'+bisakah+'*\n\Responder : '+ keh, text, { quoted: mek })
+					client.sendMessage(from, 'Pregunta : *'+bisakah+'*\n\Respuesta : '+ keh, text, { quoted: mek })
 					break
-				case 'Cuando':
+				case 'cuando':
 					kapankah = body.slice(1)
 					const kapan =['Mañana', 'Pasado mañana', 'En un rato', '4 días más', '5 días más', '6 días más', '1 semana mas', '2 semanas más', '3 semanas más' , '1 mes más', '2 meses nuevamente', '3 meses nuevamente', '4 meses nuevamente', '5 meses nuevamente', '6 meses nuevamente', '1 año más', '2 años más', ' 3 años más ',' 4 años más ',' 5 años más ',' 6 años más ',' 1 siglo más ',' 3 días más ']
 					const koh = kapan[Math.floor(Math.random() * kapan.length)]
-					client.sendMessage(from, 'Pregunta : *'+kapankah+'*\n\Responder : '+ koh, text, { quoted: mek })
+					client.sendMessage(from, 'Pregunta : *'+kapankah+'*\n\Respuesta : '+ koh, text, { quoted: mek })
 					break
-				case 'SiNoTalvez':
+				case 'sinotalvez':
 					apakah = body.slice(1)
 					const apa =['Si','No','Puede ser','Prueba de nuevo']
 					const kah = apa[Math.floor(Math.random() * apa.length)]
-					client.sendMessage(from, 'Pregunta : *'+apakah+'*\n\nJawaban : '+ kah, text, { quoted: mek })
+					client.sendMessage(from, 'Pregunta : *'+apakah+'*\n\Respuesta : '+ kah, text, { quoted: mek })
 					break
-				case 'Probabilidad':
+				case 'probabilidad':
 					rate = body.slice(1)
 					const ra =['4','9','17','28','34','48','59','62','74','83','97','100','29','94','75','82','41','39']
 					const te = ra[Math.floor(Math.random() * ra.length)]
-					client.sendMessage(from, 'Velocidad : *'+rate+'*\n\nJawaban : '+ te+'%', text, { quoted: mek })
+					client.sendMessage(from, 'Pregunta : *'+rate+'*\n\Respuesta : '+ te+'%', text, { quoted: mek })
 					break
 				case 'speed':
 				case 'ping':
-					await client.sendMessage(from, `Ping!!!!\nVelocidad: ${processTime(t, moment())} _Second_`)
+					await client.sendMessage(from, `Pong!!!!\nSpeed: ${processTime(t, moment())} _Second_`)
 					break
 				case 'help': 
 				case 'menu':
@@ -278,26 +278,27 @@ client.on('group-participants-update', async (anu) => {
 					var gh = body.slice(12)
 					var quote = gh.split("|")[0];
 					var wm = gh.split("|")[1];
-					var bg = gh.split("|")[2];
-					const pref = `Usage: \n${prefix}quotemaker teks|watermark|theme\n\nEx :\n${prefix}quotemaker ini contoh|bicit|random`
+					//var bg = gh.split("|")[2];
+					var bg='random';
+					const pref = `Uso: \n${prefix}quotemaker texto|autor\n\nEx :\n${prefix}quotemaker texto|autor|random`
 					if (args.length < 1) return reply(pref)
 					reply(mess.wait)
 					anu = await fetchJson(`https://terhambar.com/aw/qts/?kata=${quote}&author=${wm}&tipe=${bg}`, {method: 'get'})
 					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, image, {caption: 'Nih anjim', quoted: mek})
+					client.sendMessage(from, buffer, image, {caption: '', quoted: mek})
 					break
                  
                 case 'verdad':
-					const trut =['¿Alguna vez te ha gustado alguien? ¿cuánto tiempo? ',' Si es posible o si quieres, en gc / fuera de gc, ¿con quién harás amistad? (¿puedes ser diferente / del mismo sexo)? ',' ¿cuál es tu mayor miedo? ',' ¿te ha gustado alguna vez? alguien y sintió a esa persona como tú también? ',' ¿Cómo se llama tu exnovio amigo que una vez te gustó en secreto? ',' ¿Alguna vez le has robado el dinero o el padre de tu madre? ¿La razón? ',' ¿Qué te hace feliz cuando estás triste? ',' ¿Alguna vez has sido amor no correspondido? si alguna vez con quien? ¿Cómo te sientes brou? ',' ¿Alguna vez te ha engañado la gente? ',' Lo más temido ',' ¿Quién es la persona más influyente en tu vida? ',' ¿Qué cosas de orgullo te llevaste este año? ', '¿Quién es la persona que puede ponerte cachondo?', '¿Quién es la persona que alguna vez te puso cachondo', '(bgi, que es musulmán) nunca rezó en todo el día?', '¿Quién es el más cercano a tu tipo ideal de pareja? aquí ',' ¿con quién le gusta jugar? ',' ¿quién rechaza a la gente? ¿La razón por la que? ',' Menciona el incidente que te hizo daño y que aún recuerdas ',' ¿Qué tienes este año? ',' ¿Cuál fue tu peor hábito en la escuela?']
+					const trut =['¿Qué es lo que más miedo te da? ¿Por qué?','¿Alguna vez has engañado a tu pareja?','¿Has hecho una escena ridícula en un parque?','¿Has conducido borracho alguna vez?','¿Has estafado a alguien?','¿Has robado algo alguna vez?','¿Has estado en una comisaría detenido alguna vez?','¿Alguna vez has hablado contigo mismo en voz alta?','¿Has escuchado o visto algo que no existe?','¿Has tenido la sensación de no estar solo cuando no hay nadie más en la habitación? ¿Cuándo?','¿Has mentido alguna vez? ¿Cuál ha sido la mentira más elaborada que has dicho y porque tuviste que hacerlo?','¿Te han humillado alguna vez? ¿Cuándo?','¿Has hecho trampa en la escuela alguna vez?','¿Te ha gustado alguno de los profesores de la escuela? ¿Cuál?','¿Te has escapado de clases en alguna oportunidad?','¿Cómo crees que será la boda de tus sueños?','¿Cuál es tu película favorita y por qué?','¿Cuál es la parte de tu cuerpo que más te gusta? ¿Y la que menos te gusta?','¿Qué es lo que te molesta de tu pareja?','El chico que te gusta te ha invitado a salir. ¿A dónde te gustaría ir por primera vez?','¿Cuál es el mayor tiempo que has estado sin bañarte y por qué razón?','¿Cuál es el mayor tiempo que has estado sin bañarte y por qué razón?','¿Cuál ha sido el mejor sueño que has tenido dormido? ¿Y despierto?','¿Qué cosas de niño pequeño aún haces?','¿Qué cosas más te molestan de tus padres?','¿Cuál ha sido la anécdota más absurda que te han contado tus abuelos?','¿Cuál es tu comida preferida y quién la ha preparado?','¿Cuál es la parte del cuerpo que miras en alguien del sexo opuesto?','¿Quién es tu cantante favorito?','¿Qué cambiarías de tu aspecto físico?','¿Qué película de Pixar o Disney es tu favorita y por qué?','¿Cuál es el primer recuerdo de tu infancia?','¿Cuál es el mejor recuerdo de tu vida?','¿Cuál es tu mayor secreto?','¿Qué edad tenías cuando diste tu primer beso?','¿Cambiarías de novio o novia por 1 millón de dólares?','¿En qué condiciones le mentirías a tu mejor amigo?','¿Alguna vez has dicho una mentira mientras jugabas a “verdad o reto”? ¿Cuál?','¿Podrías estar una semana sin tu celular?','¿Qué ha sido lo más horrible que has dicho en público?','¿Te has extraviado alguna vez de niño?','¿Qué se lo peor que has hecho en tu vida?','¿Qué es lo más loco que has hecho sin que tus padres se enteren?','¿Qué es en lo primero que piensas cuando te despiertas?','¿Qué es lo último que piensas por las noches?','¿Has ayudado a alguien sin conocerlo alguna vez?','¿Qué harías si ganaras la lotería hoy mismo?','¿Qué harías si te enteraras de que te queda una semana de vida?','Si fueras invisible, ¿a dónde irías?','Si pudieras volar, ¿a dónde viajarías?','Si pudieras viajar en el tiempo, ¿a dónde irías? ¿y en el espacio?','¿Cuánto tiempo has tardado en comer un plato de comida muy desagradable y quién te lo ha preparado?','¿Qué comida te produce náuseas?','¿Qué harías si te enteras de que el niño que te gusta se mudará la semana entrante a otro país?','¿Cómo reaccionarías si mañana suspenden las clases para siempre?','Si te enteras de que morirás mañana, ¿a quién visitarías y qué le dirías?','Si pudieras hablar con algún familiar que ha fallecido, ¿qué le preguntarías?','¿Cómo reaccionarías si encontraras mucho dinero en la calle pero con los datos del dueño para devolverlo?','¿Quién ha sido el peor profesor y por qué?','¿Qué actor o cantante famoso te parece lindo y por qué?','Entre los presentes, ¿quién te parece lindo y por qué?']
 					const ttrth = trut[Math.floor(Math.random() * trut.length)]
 					truteh = await getBuffer(`https://i.ibb.co/305yt26/bf84f20635dedd5dde31e7e5b6983ae9.jpg`)
-					client.sendMessage(from, truteh, image, { caption: '*Truth*\n\n'+ ttrth, quoted: mek })
+					client.sendMessage(from, truteh, image, { caption: '*Verdad*\n\n'+ ttrth, quoted: mek })
 					break
 				case 'reto':
-					const dare =['Envía un mensaje a tu ex y dile "Todavía me gustas", "llama a Crush / novia ahora y ss al jugador", "pap a un miembro del grupo", "Dile" ERES TAN HERMOSA, NO FUE AMABLE ". a chicos ',' llamada reciente de whatsapp ',' suelta el emoticón "setiap" cada vez que escribas en gc / pc durante 1 día ',' envía una nota de voz diciendo ¿puedo llamarte bebé? ',' suelta una canción / cita, continúe etiquetando al miembro apropiado para esa cita ',' use una foto de Sule hasta 3 días ',' escriba en el idioma local las 24 horas ',' cambie el nombre a "Soy una niña linda, luna" durante 5 horas ' , 'chatea con tus contactos según tu% de batería, sigue diciéndole "tengo suerte de verte', 'chatea con tu ex y di" te amo, pgn back', 'graba voz lee surah al-kautsar' , 'dijo "Estoy enamorado de ti, ¿quieres ser mi novia o no?" al sexo opuesto con el que hablaste por última vez (entregas en wa / tele), espera a que te responda, si has venido aquí' , '¡indica tu tipo de novia!', 'saca / publica fotos de novia / aplasta', 'gritó gajelas y luego envía usando vn aquí', 'papéate la cara y envíasela a uno de tus amigos', 'kir Soy una foto tuya con una leyenda, soy un niño adoptivo ',' gritó usando palabras duras mientras Vn lo envió aquí ',' gritó "anjimm gabutt anjimmm" frente a tu casa ',' cambia el nombre a " BOWO "durante 24 horas", "Posesión simulada, por ejemplo: posesión de maung, posesión de langostas, posesión de nevera, etc.']
+					const dare =['ya la cague verdad?']
 					const der = dare[Math.floor(Math.random() * dare.length)]
 					tod = await getBuffer(`https://i.ibb.co/305yt26/bf84f20635dedd5dde31e7e5b6983ae9.jpg`)
-					client.sendMessage(from, tod, image, { quoted: mek, caption: '*Dare*\n\n'+ der })
+					client.sendMessage(from, tod, image, { quoted: mek, caption: '*Reto*\n\n'+ der })
 					break				
 				case 'waifu':
 				   anu = await fetchJson(`https://arugaz.herokuapp.com/api/waifu`)
@@ -321,7 +322,7 @@ client.on('group-participants-update', async (anu) => {
                          text: teks1,
                          contextInfo: {mentionedJid: [nomor]},
                      }
-                    client.sendMessage('<pontunumero>@s.whatsapp.net', options, text, {quoted: mek})
+                    client.sendMessage('<codigopais><telefonodebot>@s.whatsapp.net', options, text, {quoted: mek})
                     reply('Se han informado problemas al propietario del Bot, no se respondera a los informes falsos.')
                     break
                 
@@ -384,7 +385,7 @@ client.on('group-participants-update', async (anu) => {
 					thumb = await getBuffer(anu.thumb)
 					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
 					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp3', filename: `${anu.title}.mp3`, quoted: mek})
+					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mpeg', filename: `${anu.title}.mp3`, quoted: mek})
 					break
 
 				case 'dltiktok':
@@ -393,14 +394,14 @@ client.on('group-participants-update', async (anu) => {
 					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/tiktok_nowm?url=${args[0]}`, {method:'get'})
 					if (anu.error) return reply(anu.error)
 					teks=`*Title* : ${anu.from}`
-					buffer = await getBuffer(anu.result[0])
+					buffer = await getBuffer(anu.result[1])
 					client.sendMessage(from,buffer,video,{mimetype: 'video/mp4', filename:`${anu.from}.mp4`,quoted:mek})
 					break;
 
                 case 'text3d':
               	    if (args.length < 1) return reply('Y el texto? .-.')
                     teks = `${body.slice(8)}`
-                    if (teks.length > 10) return client.sendMessage(from, 'Mucho texto, maximo 10 letras', text, {quoted: mek})
+                    //if (teks.length > 10) return client.sendMessage(from, 'Mucho texto, maximo 10 letras', text, {quoted: mek})
                     buff = await getBuffer(`https://docs-jojo.herokuapp.com/api/text3d?text=${teks}`, {method: 'get'})
                     client.sendMessage(from, buff, image, {quoted: mek, caption: `${teks}`})
 			     	break
@@ -423,7 +424,17 @@ client.on('group-participants-update', async (anu) => {
 					//client.sendMessage(from, 'PDF: https://docs-jojo.herokuapp.com/api/ssweb_pdf?url='+args[0], text, {quoted: mek})
 					reply(anu.result)
 					break
-                
+                case 'wikipedia':
+				case 'wiki':
+					if (args.length <1) return reply('Que deseas wikibuscar?')
+					//if(!isUrl(args[0]) ) return reply(mess.error.Iv)
+					anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/wiki?q=${args[0]}`,{method: 'get'})
+					if (anu.error) return reply(anu.error)
+					reply(anu.result)
+					break
+
+
+
 				case 'ocr': 
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
